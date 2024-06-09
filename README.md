@@ -5,11 +5,13 @@
 
 *Made for version 0.36.1*
 
-## Just open cmd as admin and run main2.py to install it without making it an exe.
+## Just open cmd as admin and run main2.py to install it without making it an exe. (Requires Python on your PC)
 
 **Though if you would like to make your own exe then follow this:**
 
-First do `pip install pyinstaller`
+First create a python environment.
+
+Then install pyinstaller `pip install pyinstaller`
 
 Then `pyinstaller main.py`
 
