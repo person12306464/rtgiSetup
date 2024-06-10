@@ -15,4 +15,4 @@ Then install pyinstaller `pip install pyinstaller`
 
 Then `pyinstaller main.py`
 
-Then to make the actual exe do `pyinstaller --name rtgiSetup --onefile --icon=icon.ico --uac-admin main.py`
+Then to make the actual exe do `pyinstaller --name rtgiSetup --onefile --icon=icon.ico main.py`
