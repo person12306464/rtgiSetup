@@ -15,16 +15,17 @@ def resource_path(relative_path):
 
     return os.path.join(base_path, relative_path)
 
-try:
- is_admin = os.getuid() == 0
-except AttributeError:
- is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
-
-if is_admin == False:
-    print("⚠️ This program needs to be run as admin. ⚠️")
-    print("It needs this to add files to the Ansel folder.")
-    input("Press enter to close this.")
-    exit(1)
+#Used to check if the program was run as admin but windows defender o___o
+#try:
+# is_admin = os.getuid() == 0
+#except AttributeError:
+# is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+#
+#if is_admin == False:
+#    print("⚠️ This program needs to be run as admin. ⚠️")
+#    print("It needs this to add files to the Ansel folder.")
+#    input("Press enter to close this.")
+#    exit(1)
 
 #Make folder to extract to
 newpath = resource_path(r"RTGI")
@@ -594,22 +595,48 @@ with open(fileName29, 'w') as file:
         file.write(line)
 print("Changed roughness of specular")
 
+#Make folder to put files in
+newpath = resource_path(r"PUT IN ANSEL")
+os.makedirs(newpath)
+print("Made folder to put files in")
+
+shutil.move(resource_path('RTGI\\Shaders\\qUINT_rtgi_diffuse.fx'), resource_path('PUT IN ANSEL\\qUINT_rtgi_diffuse.fx'))
+print("Moved diffuse")
+shutil.move(resource_path('RTGI\\Shaders\\qUINT_rtgi_specular.fx'), resource_path('PUT IN ANSEL\\qUINT_rtgi_specular.fx'))
+print("Moved specular")
+shutil.move(resource_path('RTGI\\Shaders\\qUINT'), resource_path('PUT IN ANSEL\\qUINT'))
+print("Moved qUINT folder")
+shutil.move(resource_path('RTGI\\Textures\\rtgibluenoise.png'), resource_path('PUT IN ANSEL\\rtgibluenoise.png'))
+print("Moved rtgibluenoise.png")
 
 # Move files to the Ansel folder
+# Had to be removed due to windows defender being windows defender yk
 
-shutil.move(resource_path('RTGI\\Shaders\\qUINT_rtgi_diffuse.fx'), 'C:\\Program Files\\NVIDIA Corporation\\Ansel\\qUINT_rtgi_diffuse.fx')
-print("Moved diffuse")
-shutil.move(resource_path('RTGI\\Shaders\\qUINT_rtgi_specular.fx'), 'C:\\Program Files\\NVIDIA Corporation\\Ansel\\qUINT_rtgi_specular.fx')
-print("Moved specular")
-shutil.move(resource_path('RTGI\\Shaders\\qUINT'), 'C:\\Program Files\\NVIDIA Corporation\\Ansel\\qUINT')
-print("Moved qUINT folder")
-shutil.move(resource_path('RTGI\\Textures\\rtgibluenoise.png'), 'C:\\Program Files\\NVIDIA Corporation\\Ansel\\rtgibluenoise.png')
-print("Moved rtgibluenoise.png")
+#shutil.move(resource_path('RTGI\\Shaders\\qUINT_rtgi_diffuse.fx'), 'C:\\Program Files\\NVIDIA Corporation\\Ansel\\qUINT_rtgi_diffuse.fx')
+#print("Moved diffuse")
+#shutil.move(resource_path('RTGI\\Shaders\\qUINT_rtgi_specular.fx'), 'C:\\Program Files\\NVIDIA Corporation\\Ansel\\qUINT_rtgi_specular.fx')
+#print("Moved specular")
+#shutil.move(resource_path('RTGI\\Shaders\\qUINT'), 'C:\\Program Files\\NVIDIA Corporation\\Ansel\\qUINT')
+#print("Moved qUINT folder")
+#shutil.move(resource_path('RTGI\\Textures\\rtgibluenoise.png'), 'C:\\Program Files\\NVIDIA Corporation\\Ansel\\rtgibluenoise.png')
+#print("Moved rtgibluenoise.png")
 
 #Delete the RTGI directory
 shutil.rmtree(resource_path('RTGI'))
 
-print("Successfully installed qUINT_rtgi.")
+print("")
+print("")
+print("")
 
-MessageBox = ctypes.windll.user32.MessageBoxW
-MessageBox(None, 'Successfully installed qUINT_rtgi.', 'rtgiSetup.exe', 0)
+print(r"Press Win + R and put C:\Program Files\NVIDIA Corporation\Ansel and hit enter.")
+print("Then move all files from PUT IN ANSEL to this directory.")
+print("")
+
+input("Press enter when you're done. ")
+
+shutil.rmtree(resource_path('PUT IN ANSEL'))
+
+#print("Successfully installed qUINT_rtgi.")
+
+#MessageBox = ctypes.windll.user32.MessageBoxW
+#MessageBox(None, 'Successfully installed qUINT_rtgi.', 'rtgiSetup.exe', 0)
