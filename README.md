@@ -5,14 +5,8 @@
 
 *Made for version 0.36.1*
 
-## Just open cmd as admin and run main2.py to install it without making it an exe. (Requires Python on your PC)
+## To compile it yourself:
 
-**Though if you would like to make your own exe then follow this:**
+First open the project then in the terminal and run `dotnet publish -c Release -p:PublishReadyToRun=true --self-contained`
 
-First create a python environment.
-
-Then install pyinstaller `pip install pyinstaller`
-
-Then `pyinstaller main.py`
-
-Then to make the actual exe do `pyinstaller --name rtgiSetup --onefile --icon=icon.ico main.py`
+You'll find the result in `rtgiSetup\bin\Release\net8.0\win-x64\publish`
