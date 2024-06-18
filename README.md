@@ -5,6 +5,8 @@
 
 *Made for version 0.36.1*
 
+### Now also contains path tracing so drop 0.17.0.2 in as well.
+
 ## To compile it yourself:
 
 First make sure you have [.NET](https://dotnet.microsoft.com/en-us/download) installed.
